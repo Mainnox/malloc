@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 10:45:12 by akremer           #+#    #+#             */
-/*   Updated: 2021/06/24 10:45:22 by akremer          ###   ########.fr       */
+/*   Updated: 2021/06/24 16:57:39 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
  *	Define size of heap and navigation macro
@@ -28,7 +29,7 @@
 #define TINY_BLOCK_SIZE (TINY_HEAP_ALLOCATION_SIZE / 128)
 #define SMALL_HEAP_ALLOCATION_SIZE (16 * getpagesize())
 #define SMALL_BLOCK_SIZE (SMALL_HEAP_ALLOCATION_SIZE / 128)
-#define bool short
+#define bool char
 #define true 1
 #define false 0
 
@@ -37,22 +38,22 @@
  *	Same for blocks
  */
 
-typedef struct 		s_heap
-{
-	struct s_heap	*prev;
-	struct s_heap	*next;
-	//t_heap_group	group;
-	size_t		total_size;
-	size_t		block_count;
-}			t_heap;
-
 typedef struct		s_block
 {
-	struct s_block	*prev;
 	struct s_block	*next;
 	size_t		data_size;
-	bool		freed;
 }			t_block;
+
+typedef struct 		s_heap
+{
+	char			type;
+	size_t			total_size;
+	struct s_heap	*next;
+	t_block			*block;
+	size_t			block_count;
+}			t_heap;
+
+t_heap *g_heap;
 
 /*
  *	Main function
