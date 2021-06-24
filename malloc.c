@@ -42,11 +42,56 @@ t_heap		*createnewheap(size_t size)
 	return (NULL);
 }
 
+static char	taketype(size_t size)
+{
+	char ret;
+
+	if (size < TINY_BLOCK_SIZE)
+		ret = 1;
+	else if (size < SMALL_BLOCK_SIZE)
+		ret = 2;
+	else
+		ret = 3;
+	return (ret);
+}
+
+t_heap		*checkifheapmatch(char type)
+{
+	t_heap	*heap_tmp = g_heap;
+
+	while (heap_tmp)
+	{
+		if (heap_tmp->type = type)
+			return (heap_tmp);
+		heap_tmp = heap_tmp->next;
+	}
+	return (NULL);
+}
+
 void		*malloc(size_t size)
 {
-	//				Check we have a pages for this size
+	char	type = taketype(size);
+
 	if (!g_heap)
 		g_heap = createnewheap(size);
-	//				Made the block for the designed page
+	else
+	{
+		t_heap *save = checkifheapmatch(type);
+		if (save)
+			;	// Grab the adress where do you want to put the block and place it 
+		else
+		{
+			t_heap *first = createnewheap(size);
+			first->next = g_heap;
+			g_heap = first;
+		}
+	}
+	//		Check if you have a pages ready with the good type and with space for the block
+	//
+	//		Grab the address where do you want to put the block
+	//
+	//		Put the blocks at the good area
+	//
+	//		Return the adress of the block
 	return (NULL);
 }
