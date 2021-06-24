@@ -1,4 +1,16 @@
-#ifndef MALLOC_h
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   malloc.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/24 10:45:12 by akremer           #+#    #+#             */
+/*   Updated: 2021/06/24 10:45:22 by akremer          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef MALLOC_H
 #define MALLOC_H
 
 #include <sys/mman.h>
@@ -46,5 +58,6 @@ typedef struct		s_block
  *	Main function
  */
 
+void		*malloc(size_t size);
 
 #endif
