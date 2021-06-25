@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 10:45:12 by akremer           #+#    #+#             */
-/*   Updated: 2021/06/24 16:57:39 by akremer          ###   ########.fr       */
+/*   Updated: 2021/06/25 19:46:38 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 #define bool char
 #define true 1
 #define false 0
+#define TEST -255
 #define TINY 1
 #define SMALL 2
 #define LARGE 3
@@ -43,14 +44,16 @@
 
 typedef struct		s_block
 {
+	bool			freed;
 	struct s_block	*next;
-	size_t		data_size;
+	size_t			data_size;
 }			t_block;
 
 typedef struct 		s_heap
 {
 	char			type;
 	size_t			total_size;
+	size_t			remain_size;
 	struct s_heap	*next;
 	t_block			*block;
 	size_t			block_count;
@@ -59,7 +62,27 @@ typedef struct 		s_heap
 t_heap *g_heap;
 
 /*
- *	Main function
+ *	Tool's functions
+ */
+
+void		hexDump(char *desc, void *addr, int len);
+
+/*
+ *	Heap's functions
+ */
+
+t_heap		*checkifheapmatch(char type);
+t_heap		*createnewheap(size_t size, char type);
+
+/*
+ *	Block's functions
+ */
+
+t_block		*createnewblock(t_heap *act_page, size_t size, char type);
+t_block		*wheretoplaceblock(t_heap *act_page);
+
+/*
+ *	Main's functions
  */
 
 void		*malloc(size_t size);
