@@ -12,9 +12,9 @@
 
 #include "malloc.h"
 
-t_block		*createnewblock(size_t size)
+t_block		*createnewblock(t_heap *where, size_t size)
 {
-	t_block	*new_block;
+	t_block	*new_block = (t_block *)where;
 
 	if (size < TINY_BLOCK_SIZE)
 	{
@@ -25,10 +25,11 @@ t_block		*createnewblock(size_t size)
 	return (NULL);
 }
 
-t_heap		*createnewheap(size_t size)
+t_heap		*createnewheap(size_t size, char type)
 {
 	t_heap	*new_heap;
 
+	if (type == TINY)
 	{
 		new_heap = (t_heap *)mmap(NULL, TINY_HEAP_ALLOCATION_SIZE
 				, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
@@ -47,11 +48,11 @@ static char	taketype(size_t size)
 	char ret;
 
 	if (size < TINY_BLOCK_SIZE)
-		ret = 1;
+		ret = TINY;
 	else if (size < SMALL_BLOCK_SIZE)
-		ret = 2;
+		ret = SMALL;
 	else
-		ret = 3;
+		ret = LARGE;
 	return (ret);
 }
 
@@ -73,7 +74,7 @@ void		*malloc(size_t size)
 	char	type = taketype(size);
 
 	if (!g_heap)
-		g_heap = createnewheap(size);
+		g_heap = createnewheap(size, type);
 	else
 	{
 		t_heap *save = checkifheapmatch(type);
@@ -81,9 +82,10 @@ void		*malloc(size_t size)
 			;	// Grab the adress where do you want to put the block and place it 
 		else
 		{
-			t_heap *first = createnewheap(size);
+			t_heap *first = createnewheap(size, type);
 			first->next = g_heap;
 			g_heap = first;
+
 		}
 	}
 	//		Check if you have a pages ready with the good type and with space for the block

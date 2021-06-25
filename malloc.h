@@ -32,6 +32,9 @@
 #define bool char
 #define true 1
 #define false 0
+#define TINY 1
+#define SMALL 2
+#define LARGE 3
 
 /*
  *	Heap struct with metadata
