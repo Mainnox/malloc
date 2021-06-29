@@ -25,6 +25,10 @@ Creation d'un block LARGE en trop dans le cas:
 
 freed bool don't change maybe just use chain list dunno or just fix the adress jump 
 
+try to fill the bool with a string to see how react the memory and where did I write it to ajust the adress for better input
+
+
 next part for free seems to be good
 
-so just realloc after his some error hunt and we're good`
+so just realloc after his some error hunt and we're good
+
