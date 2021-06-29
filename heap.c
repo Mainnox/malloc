@@ -6,11 +6,22 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 11:51:20 by akremer           #+#    #+#             */
-/*   Updated: 2021/06/25 19:46:33 by akremer          ###   ########.fr       */
+/*   Updated: 2021/06/29 11:39:30 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
+
+static bool	freeplacepage(t_heap *heap, char type)
+{
+	if (type == TINY)
+		if (heap->block_count < MAX_TINY_BLOCK)
+			return (true);
+	if (type == SMALL)
+		if (heap->block_count < MAX_SMALL_BLOCK)
+			return (true);
+	return (false);
+}
 
 t_heap		*checkifheapmatch(char type)
 {
@@ -21,7 +32,8 @@ t_heap		*checkifheapmatch(char type)
 	while (heap_tmp)
 	{
 		if (heap_tmp->type == type)
-			return (heap_tmp);
+			if (freeplacepage(heap_tmp, type))
+				return (heap_tmp);
 		heap_tmp = heap_tmp->next;
 	}
 	printf("check if heap match = NULL\n");

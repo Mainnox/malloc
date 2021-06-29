@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 10:45:12 by akremer           #+#    #+#             */
-/*   Updated: 2021/06/25 19:46:38 by akremer          ###   ########.fr       */
+/*   Updated: 2021/06/29 11:07:11 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ typedef struct		s_block
 typedef struct 		s_heap
 {
 	char			type;
+	char			block_freed;
+	char			block_count;
 	size_t			total_size;
-	size_t			remain_size;
-	struct s_heap	*next;
 	t_block			*block;
-	size_t			block_count;
+	struct s_heap	*next;
 }			t_heap;
 
 t_heap *g_heap;
@@ -88,5 +88,6 @@ t_block		*wheretoplaceblock(t_heap *act_page);
  */
 
 void		*malloc(size_t size);
+void		free(void *ptr);
 
 #endif
