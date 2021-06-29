@@ -26,8 +26,8 @@ void hexDump(char *desc, void *addr, int len)
             if (i != 0)
                 printf("  %s\n", buff);
             printf("  %04x ", i);
-        }
-        printf(" %02x", pc[i]);
+       	}
+	i % 16 == 7 ? printf(" %02x -", pc[i]) : printf(" %02x", pc[i]);
         if ((pc[i] < 0x20) || (pc[i] > 0x7e)) {
             buff[i % 16] = '.';
         } else {

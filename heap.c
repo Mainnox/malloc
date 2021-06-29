@@ -15,10 +15,10 @@
 static bool	freeplacepage(t_heap *heap, char type)
 {
 	if (type == TINY)
-		if (heap->block_count < MAX_TINY_BLOCK)
+		if (heap->block_count < MAX_TINY_BLOCK || heap->block_freed)
 			return (true);
 	if (type == SMALL)
-		if (heap->block_count < MAX_SMALL_BLOCK)
+		if (heap->block_count < MAX_SMALL_BLOCK || heap->block_freed)
 			return (true);
 	return (false);
 }
@@ -36,7 +36,6 @@ t_heap		*checkifheapmatch(char type)
 				return (heap_tmp);
 		heap_tmp = heap_tmp->next;
 	}
-	printf("check if heap match = NULL\n");
 	return (NULL);
 }
 
@@ -52,6 +51,7 @@ t_heap		*createnewheap(size_t size, char type)
 		new_heap->total_size = TINY_HEAP_ALLOCATION_SIZE;
 		new_heap->next = NULL;
 		new_heap->block_count = 0;
+		new_heap->block_freed = 0;
 		new_heap->block = NULL;
 		return (new_heap);
 	}
@@ -63,6 +63,7 @@ t_heap		*createnewheap(size_t size, char type)
 		new_heap->total_size = SMALL_HEAP_ALLOCATION_SIZE;
 		new_heap->next = NULL;
 		new_heap->block_count = 0;
+		new_heap->block_freed = 0;
 		new_heap->block = NULL;
 		return (new_heap);
 	}
@@ -74,6 +75,7 @@ t_heap		*createnewheap(size_t size, char type)
 		new_heap->total_size = size;
 		new_heap->next = NULL;
 		new_heap->block_count = 0;
+		new_heap->block_freed = 0;
 		new_heap->block = NULL;
 		return (new_heap);
 	}

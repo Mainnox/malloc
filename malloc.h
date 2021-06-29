@@ -54,7 +54,7 @@ typedef struct		s_block
 typedef struct 		s_heap
 {
 	char			type;
-	char			block_freed;
+	unsigned char			block_freed;
 	char			block_count;
 	size_t			total_size;
 	t_block			*block;

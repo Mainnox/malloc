@@ -22,6 +22,9 @@ Creation d'un block LARGE en trop dans le cas:
         for (int i = 0; i < 128; i++)
                 test7[i] = 'v';
 
-segfault quand printf dans la creation d'heap LARGE
 
+freed bool don't change maybe just use chain list dunno or just fix the adress jump 
 
+next part for free seems to be good
+
+so just realloc after his some error hunt and we're good`

@@ -24,18 +24,38 @@ int		main()
 
 	printf("getpagesize = %d\n", getpagesize());
 	printf("[size tiny]\n1 = %d\n2 = %d\n\n[size small]\n1 = %d\n2 = %d\n", TINY_HEAP_ALLOCATION_SIZE, TINY_BLOCK_SIZE, SMALL_HEAP_ALLOCATION_SIZE, SMALL_BLOCK_SIZE);
-	for (int i = 0; i < 125; i++)
+//	for (int i = 0; i < 125; i++)
+//	{
+//		test = (char *)malloc(128);
+//		for (int i = 0; i < 128; i++)
+//			test[i] = 'a';
+//	}	
+//	for (int i = 0; i < 125; i++)
+//	{
+//		test = (char *)malloc(128);
+//		for (int i = 0; i < 128; i++)
+//			test[i] = 'a';
+//		free(test);
+//	}	
+//	test = (char *)malloc(520);
+//	for (int i = 0; i < 520; i++)
+//		test[i] = 'c';
+//	free(test);
+	for (int i = 0; i < 100; i++)
 	{
+		printf("Appel numero %d\n", i);
 		test = (char *)malloc(128);
 		for (int i = 0; i < 128; i++)
-			test[i] = 'a';
-	}	
-	for (int i = 0; i < 125; i++)
+			test[i] = 'c';
+		if (i == 10 || i == 50 || i == 99)
+			free(test);
+	}
+	for (int i = 0; i < 3; i++)
 	{
-		test = (char *)malloc(129);
-		for (int i = 0; i < 512; i++)
-			test[i] = 'a';
-	}	
+		test = (char *)malloc(128);
+			for (int i = 0; i < 128; i++)
+				test[i] = 'd';
+	}
 	while (g_heap)
 	{
 		char *type = (char *)g_heap;
@@ -46,9 +66,11 @@ int		main()
 		if (*type == LARGE)
 			hexDump("Heap LARGE", g_heap, g_heap->total_size);
 		printf("block_count = %d\n", g_heap->block_count);
-		//munmap(g_heap, g_heap->total_size);
+		printf("block_freed == %d\n", g_heap->block_freed);
+		printf("interval = %ld\n", (void *)g_heap->block - (void *)g_heap);
 		g_heap = g_heap->next;
 	}
+	printf("heap p = %p\nblock p = %p\n", &g_heap, &g_heap->block);
 	printf("Sizeof t_block == %d\n", sizeof(t_block));
 	return (0);
 }
