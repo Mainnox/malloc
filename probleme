@@ -1,0 +1,27 @@
+Creation d'un block LARGE en trop dans le cas:
+ test = (char *)malloc(129);
+        test2 = (char *)malloc(128);
+        test3 = (char *)malloc(128);
+        test4 = (char *)malloc(128);
+        test5 = (char *)malloc(128);
+        test6 = (char *)malloc(128);
+        test7 = (char *)malloc(128);
+        printf("Kikou \n");
+        for (int i = 0; i < 129; i++)
+                test[i] = 'c';
+        for (int i = 0; i < 128; i++)
+                test2[i] = 'd';
+        for (int i = 0; i < 128; i++)
+                test3[i] = 'q';
+        for (int i = 0; i < 128; i++)
+                test4[i] = 'a';
+        for (int i = 0; i < 128; i++)
+                test5[i] = 'z';
+        for (int i = 0; i < 128; i++)
+                test6[i] = 'x';
+        for (int i = 0; i < 128; i++)
+                test7[i] = 'v';
+
+segfault quand printf dans la creation d'heap LARGE
+
+

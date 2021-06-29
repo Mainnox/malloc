@@ -27,6 +27,8 @@
 #define BLOCK_SHIFT(start) ((void *)start + sizeof(t_block))
 #define TINY_HEAP_ALLOCATION_SIZE (4 * getpagesize())
 #define TINY_BLOCK_SIZE (TINY_HEAP_ALLOCATION_SIZE / 128)
+#define MAX_TINY_BLOCK 107
+#define MAX_SMALL_BLOCK 122
 #define SMALL_HEAP_ALLOCATION_SIZE (16 * getpagesize())
 #define SMALL_BLOCK_SIZE (SMALL_HEAP_ALLOCATION_SIZE / 128)
 #define bool char

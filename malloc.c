@@ -38,6 +38,7 @@ void		*malloc(size_t size)
 	}
 	else
 	{
+		printf("Type = %d\n", type);
 		act_page = checkifheapmatch(type);
 		if (!act_page)
 		{
