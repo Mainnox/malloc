@@ -35,12 +35,14 @@ static t_heap	*findheap(t_block **hime)
 
 void		free(void *ptr)
 {
-	t_block *block = (t_block *)ptr;
+	void	*tmp;
 	t_heap	*heap;
 	t_heap	*heap_tmp;
+	t_block	*block;
 
 	if (!ptr || !(heap = findheap((t_block **)&ptr)))
 		return ;
+	block = (t_block *)(ptr - sizeof(t_block));
 	block->freed = true;
 	heap->block_freed++;
 	if (heap->block_count == heap->block_freed)

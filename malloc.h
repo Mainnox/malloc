@@ -44,12 +44,12 @@
  *	Same for blocks
  */
 
-typedef struct		s_block
+typedef struct			s_block
 {
 	bool			freed;
-	struct s_block	*next;
+	struct s_block		*next;
 	size_t			data_size;
-}			t_block;
+}				t_block;
 
 typedef struct 		s_heap
 {

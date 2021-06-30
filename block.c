@@ -32,14 +32,14 @@ t_block		*createnewblock(t_heap *act_page, size_t size, char type)
 	t_block	*new_block;
 
 	//write(1, "Pourquoi !\n", 11);
-//	if (act_page->block_freed)
-//	{
-//		new_block = fillfreed(act_page);
-//		act_page->block_freed--;
-//		new_block->freed = false;
-//	}
-//	else
-//	{
+	if (act_page->block_freed)
+	{
+		new_block = fillfreed(act_page);
+		act_page->block_freed--;
+		new_block->freed = false;
+	}
+	else
+	{
 		if (!act_page->block)
 			new_block = (void *)act_page + sizeof(t_heap);
 		else
@@ -56,7 +56,7 @@ t_block		*createnewblock(t_heap *act_page, size_t size, char type)
 			new_block->next = NULL;
 			new_block->freed = false;
 			act_page->block = new_block;
-//	}
+	}
 	new_block->data_size = size;
 	return ((void *)new_block + sizeof(t_block));
 }
