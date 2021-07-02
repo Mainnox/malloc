@@ -68,6 +68,7 @@ t_heap *g_heap;
  */
 
 void		hexDump(char *desc, void *addr, int len);
+void		*ft_memcpy(void *dest, const void *src, size_t size);
 
 /*
  *	Heap's functions
@@ -75,6 +76,7 @@ void		hexDump(char *desc, void *addr, int len);
 
 t_heap		*checkifheapmatch(char type);
 t_heap		*createnewheap(size_t size, char type);
+t_heap		*findblock(t_heap **hime);
 
 /*
  *	Block's functions
@@ -89,5 +91,6 @@ t_block		*wheretoplaceblock(t_heap *act_page);
 
 void		*malloc(size_t size);
 void		free(void *ptr);
+void		*realloc(void *ptr, size_t size);
 
 #endif

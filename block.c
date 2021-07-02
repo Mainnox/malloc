@@ -23,7 +23,6 @@ static t_block	*fillfreed(t_heap *heap)
 			return (block_tmp);
 		block_tmp = block_tmp->next;
 	}
-	write(1, "Pourquoi !\n", 11);
 	return (NULL);
 }
 
@@ -31,7 +30,6 @@ t_block		*createnewblock(t_heap *act_page, size_t size, char type)
 {
 	t_block	*new_block;
 
-	//write(1, "Pourquoi !\n", 11);
 	if (act_page->block_freed)
 	{
 		new_block = fillfreed(act_page);

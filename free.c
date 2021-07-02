@@ -12,7 +12,7 @@
 
 #include "malloc.h"
 
-static t_heap	*findheap(t_block **hime)
+t_heap		*findheap(t_block **hime)
 {
 	t_heap	*heap_tmp = g_heap;
 	t_block	*him = *hime;
