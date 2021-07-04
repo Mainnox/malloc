@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "malloc.h"
 
 void hexDump(char *desc, void *addr, int len) 
 {
@@ -40,4 +41,21 @@ void hexDump(char *desc, void *addr, int len)
         i++;
     }
     printf("  %s\n", buff);
+}
+void	show_alloc_mem_hexdump()
+{
+	t_heap	*heap = g_heap;
+
+	while (heap)
+	{
+		char *type = (char *)heap;
+		if (*type == TINY)
+			hexDump("Heap TINY", heap, TINY_HEAP_ALLOCATION_SIZE);
+		if (*type == SMALL)
+			hexDump("Heap SMALL", heap, SMALL_HEAP_ALLOCATION_SIZE);
+		if (*type == LARGE)
+			hexDump("Heap LARGE", heap, heap->total_size);
+		printf("block_count = %d\n", heap->block_count);
+		heap = heap->next;
+	}
 }

@@ -72,6 +72,7 @@ void		*ft_memcpy(void *dest, const void *src, size_t size);
 void		ft_putstr(char *str);
 void		show_alloc_mem(void);
 void		ft_putnbr_base(long nb, int b, char *base);
+void		show_alloc_mem_hexdump(void);
 
 /*
  *	Heap's functions

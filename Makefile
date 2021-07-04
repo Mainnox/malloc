@@ -12,7 +12,7 @@
 
 NAME_LINK = libft_malloc.so
 NAME = libft_malloc_$(HOSTTYPE).so
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -fPIC -Wall -Wextra -Werror 
 HEADER_PATH = includes/
 HEADER_NAME = malloc.h
 HEADER = $(addprefix $(HEADER_PATH), $(HEADER_NAME))

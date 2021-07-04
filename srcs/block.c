@@ -52,8 +52,8 @@ t_block		*createnewblock(t_heap *act_page, size_t size, char type)
 			new_block->next = act_page->block;
 		else
 			new_block->next = NULL;
-			new_block->freed = false;
-			act_page->block = new_block;
+		new_block->freed = false;
+		act_page->block = new_block;
 	}
 	new_block->data_size = size;
 	return ((void *)new_block + sizeof(t_block));

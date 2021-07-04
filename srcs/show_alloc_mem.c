@@ -34,17 +34,17 @@ static void		show_alloc_mem_recu(t_heap	*heap, size_t *total_size)
 
 	if (heap->next)
 		show_alloc_mem_recu(heap->next, total_size);
-		if (heap->type == TINY)
-			ft_putstr("TINY : 0x");
-		if (heap->type == SMALL)
-			ft_putstr("SMALL : 0x");
-		if (heap->type == LARGE)
-			ft_putstr("LARGE : 0x");
-		ft_putnbr_base((long)heap, 16, "0123456789ABCDEF");
-		ft_putstr("\n\n");
-		char i = 0;
-		show_blocks(heap->block, heap->type, total_size, &i);
-		ft_putstr("\n");
+	if (heap->type == TINY)
+		ft_putstr("TINY : 0x");
+	if (heap->type == SMALL)
+		ft_putstr("SMALL : 0x");
+	if (heap->type == LARGE)
+		ft_putstr("LARGE : 0x");
+	ft_putnbr_base((long)heap, 16, "0123456789ABCDEF");
+	ft_putstr("\n\n");
+	char i = 0;
+	show_blocks(heap->block, heap->type, total_size, &i);
+	ft_putstr("\n");
 }
 
 void			show_alloc_mem()

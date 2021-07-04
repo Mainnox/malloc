@@ -13,7 +13,7 @@ int 		main()
 		free(addr);
 		i++;
 	}
-	//show_alloc_mem();
+	show_alloc_mem();
 	/*
 	while (g_heap)
 	{

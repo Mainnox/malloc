@@ -15,5 +15,6 @@ void		*realloc(void *ptr, size_t size)
 			ft_memcpy(ret, ptr, size);
 	}
 	free(ptr);
+	printf("caca\n");
 	return (ret);
 }
