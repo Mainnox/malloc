@@ -6,12 +6,13 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 10:45:05 by akremer           #+#    #+#             */
-/*   Updated: 2021/06/29 10:49:19 by akremer          ###   ########.fr       */
+/*   Updated: 2021/07/05 16:33:25 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
+t_heap *g_heap = NULL;
 
 static char	taketype(size_t size)
 {
@@ -49,5 +50,6 @@ void		*malloc(size_t size)
 			g_heap = first;
 		}
 	}
+	show_alloc_mem_hexdump();
 	return (createnewblock(act_page, size, type));
 }

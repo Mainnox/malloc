@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 10:45:12 by akremer           #+#    #+#             */
-/*   Updated: 2021/07/02 14:00:02 by akremer          ###   ########.fr       */
+/*   Updated: 2021/07/05 16:04:47 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct 		s_heap
 	struct s_heap	*next;
 }			t_heap;
 
-t_heap *g_heap;
+extern t_heap *g_heap;
 
 /*
  *	Tool's functions

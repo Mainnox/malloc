@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 11:51:20 by akremer           #+#    #+#             */
-/*   Updated: 2021/06/29 11:39:30 by akremer          ###   ########.fr       */
+/*   Updated: 2021/07/05 15:03:46 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_heap		*createnewheap(size_t size, char type)
 		new_heap = (t_heap *)mmap(NULL, size
 				, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
 		new_heap->type = LARGE;
-		new_heap->total_size = size;
+		new_heap->total_size = size + sizeof(t_heap) + sizeof(t_block);
 		new_heap->next = NULL;
 		new_heap->block_count = 0;
 		new_heap->block_freed = 0;

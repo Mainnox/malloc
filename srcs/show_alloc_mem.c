@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 10:22:20 by akremer           #+#    #+#             */
-/*   Updated: 2021/07/02 11:56:02 by akremer          ###   ########.fr       */
+/*   Updated: 2021/07/05 16:33:31 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void		show_alloc_mem_recu(t_heap	*heap, size_t *total_size)
 void			show_alloc_mem()
 {
 	size_t		total_size = 0;
+	if (!g_heap)
+		return;
 	t_heap *heap = g_heap;
 	show_alloc_mem_recu(heap, &total_size);
 }

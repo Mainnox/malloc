@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 10:49:34 by akremer           #+#    #+#             */
-/*   Updated: 2021/07/02 14:01:45 by akremer          ###   ########.fr       */
+/*   Updated: 2021/07/05 16:33:29 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ void		free(void *ptr)
 	if (heap->block_count == heap->block_freed)
 	{
 		if (heap == g_heap)
+		{
 			g_heap = g_heap->next;
+		}
 		else
 		{
 			heap_tmp = g_heap;
@@ -57,4 +59,5 @@ void		free(void *ptr)
 		}
 		munmap(heap, heap->total_size);
 	}
+//	show_alloc_mem();
 }
