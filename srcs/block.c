@@ -39,7 +39,7 @@ t_block		*createnewblock(t_heap *act_page, size_t size, char type)
 	else
 	{
 		if (!act_page->block)
-			new_block = (void *)act_page + sizeof(t_block);
+			new_block = (void *)act_page + sizeof(t_heap);
 		else
 		{
 			if (type == TINY)
@@ -56,5 +56,6 @@ t_block		*createnewblock(t_heap *act_page, size_t size, char type)
 		act_page->block = new_block;
 	}
 	new_block->data_size = size;
+	write(1, "Malloc done \n", 13);
 	return ((void *)new_block + sizeof(t_block));
 }

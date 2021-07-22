@@ -32,6 +32,7 @@ void		*malloc(size_t size)
 	char	type = taketype(size);
 	t_heap	*act_page;
 
+	write(1, "Malloc start\n", 13);
 	if (size <= 0)
 		return (NULL);
 	if (!g_heap)

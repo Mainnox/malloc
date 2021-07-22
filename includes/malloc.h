@@ -96,5 +96,6 @@ t_block		*wheretoplaceblock(t_heap *act_page);
 void		*malloc(size_t size);
 void		free(void *ptr);
 void		*realloc(void *ptr, size_t size);
+void		*calloc(size_t nmbr, size_t size);
 
 #endif

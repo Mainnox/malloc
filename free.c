@@ -20,16 +20,13 @@ t_heap		*findheap(t_block **hime)
 	while (heap_tmp)
 	{
 		if (heap_tmp->type == TINY)
-			if (((void *)heap_tmp < (void *)him) && (void *)heap_tmp
-					+ (long)TINY_HEAP_ALLOCATION_SIZE >= (void *)him)
+			if (((void *)him - (void *)heap_tmp) <= (long)TINY_HEAP_ALLOCATION_SIZE)
 				return (heap_tmp);
 		if (heap_tmp->type == SMALL)
-			if (((void *)heap_tmp < (void *)him) && (void *)heap_tmp
-					+ (long)SMALL_HEAP_ALLOCATION_SIZE >= (void *)him)
+			if (((void *)him - (void *)heap_tmp) <= (long)SMALL_HEAP_ALLOCATION_SIZE)
 				return (heap_tmp);
 		if (heap_tmp->type == LARGE)
-			if (((void *)heap_tmp < (void *)him) && (void *)heap_tmp
-					+ (long)heap_tmp->total_size >= (void *)him)
+			if (((void *)him - (void *)heap_tmp) <= (long)heap_tmp->total_size)
 				return (heap_tmp);
 		heap_tmp = heap_tmp->next;
 	}
@@ -42,7 +39,7 @@ void		free(void *ptr)
 	t_heap	*heap_tmp;
 	t_block	*block;
 
-	printf("free start\n");
+	printf("Free start\n");
 	if (!ptr || !(heap = findheap((t_block **)&ptr)))
 		return ;
 	block = (t_block *)(ptr - sizeof(t_block));
@@ -51,7 +48,9 @@ void		free(void *ptr)
 	if (heap->block_count == heap->block_freed)
 	{
 		if (heap == g_heap)
+		{
 			g_heap = g_heap->next;
+		}
 		else
 		{
 			heap_tmp = g_heap;
@@ -61,5 +60,5 @@ void		free(void *ptr)
 		}
 		munmap(heap, heap->total_size);
 	}
-	printf("free done\n");
+	printf("Free done\n");
 }

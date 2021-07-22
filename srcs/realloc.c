@@ -7,6 +7,7 @@ void		*realloc(void *ptr, size_t size)
 	void		*ret;
 	t_block		*s;
 
+	printf("realloc start\n");
 	ret = malloc(size);
 	if (ret && ptr)
 	{
@@ -17,5 +18,6 @@ void		*realloc(void *ptr, size_t size)
 			ft_memcpy(ptr, ret, size);
 	}
 	free(ptr);
+	printf("realloc done\n");
 	return (ret);
 }
