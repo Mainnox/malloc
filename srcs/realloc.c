@@ -8,17 +8,13 @@ void		*realloc(void *ptr, size_t size)
 	t_block		*s;
 
 	ret = malloc(size);
-	printf("Realloc start\n");
-	printf("realloc ptr = %p\n", ptr);
-	printf("realloc ret = %p\n", ret);
 	if (ret && ptr)
 	{
 		s = (t_block *)(ret - (sizeof(t_block)));
-		printf("s->sata_size = %zu\n", s->data_size);
-		if (s->data_size < size)
-			memcpy(ret, ptr, s->data_size);
+		if (s->data_size <= size)
+			ft_memcpy(ptr, ret, s->data_size);
 		else
-			memcpy(ret, ptr, size);
+			ft_memcpy(ptr, ret, size);
 	}
 	free(ptr);
 	return (ret);

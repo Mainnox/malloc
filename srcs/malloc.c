@@ -50,6 +50,5 @@ void		*malloc(size_t size)
 			g_heap = first;
 		}
 	}
-	show_alloc_mem_hexdump();
 	return (createnewblock(act_page, size, type));
 }

@@ -20,13 +20,16 @@ t_heap		*findheap(t_block **hime)
 	while (heap_tmp)
 	{
 		if (heap_tmp->type == TINY)
-			if (((void *)him - (void *)heap_tmp) <= (long)TINY_HEAP_ALLOCATION_SIZE)
+			if (((void *)heap_tmp < (void *)him) && (void *)heap_tmp
+					+ (long)TINY_HEAP_ALLOCATION_SIZE >= (void *)him)
 				return (heap_tmp);
 		if (heap_tmp->type == SMALL)
-			if (((void *)him - (void *)heap_tmp) <= (long)SMALL_HEAP_ALLOCATION_SIZE)
+			if (((void *)heap_tmp < (void *)him) && (void *)heap_tmp
+					+ (long)SMALL_HEAP_ALLOCATION_SIZE >= (void *)him)
 				return (heap_tmp);
 		if (heap_tmp->type == LARGE)
-			if (((void *)him - (void *)heap_tmp) <= (long)heap_tmp->total_size)
+			if (((void *)heap_tmp < (void *)him) && (void *)heap_tmp
+					+ (long)heap_tmp->total_size >= (void *)him)
 				return (heap_tmp);
 		heap_tmp = heap_tmp->next;
 	}
@@ -47,9 +50,7 @@ void		free(void *ptr)
 	if (heap->block_count == heap->block_freed)
 	{
 		if (heap == g_heap)
-		{
 			g_heap = g_heap->next;
-		}
 		else
 		{
 			heap_tmp = g_heap;
@@ -59,5 +60,4 @@ void		free(void *ptr)
 		}
 		munmap(heap, heap->total_size);
 	}
-//	show_alloc_mem();
 }

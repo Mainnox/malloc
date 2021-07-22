@@ -39,7 +39,7 @@ t_block		*createnewblock(t_heap *act_page, size_t size, char type)
 	else
 	{
 		if (!act_page->block)
-			new_block = (void *)act_page + sizeof(t_heap);
+			new_block = (void *)act_page + sizeof(t_block);
 		else
 		{
 			if (type == TINY)

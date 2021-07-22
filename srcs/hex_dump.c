@@ -45,6 +45,7 @@ void hexDump(char *desc, void *addr, int len)
 void	show_alloc_mem_hexdump()
 {
 	t_heap	*heap = g_heap;
+	int	i = 0;
 
 	while (heap)
 	{
@@ -57,5 +58,7 @@ void	show_alloc_mem_hexdump()
 			hexDump("Heap LARGE", heap, heap->total_size);
 		printf("block_count = %d\n", heap->block_count);
 		heap = heap->next;
+		i++;
 	}
+	printf("number of pages = %d\n", i);
 }
