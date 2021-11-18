@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 10:45:05 by akremer           #+#    #+#             */
-/*   Updated: 2021/07/05 16:33:25 by akremer          ###   ########.fr       */
+/*   Updated: 2021/11/18 14:22:35 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void		*malloc(size_t size)
 	char	type = taketype(size);
 	t_heap	*act_page;
 
-	write(1, "Malloc start\n", 13);
 	if (size <= 0)
 		return (NULL);
 	if (!g_heap)

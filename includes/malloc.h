@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 10:45:12 by akremer           #+#    #+#             */
-/*   Updated: 2021/07/05 16:04:47 by akremer          ###   ########.fr       */
+/*   Updated: 2021/11/18 14:30:31 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void		ft_putstr(char *str);
 void		show_alloc_mem(void);
 void		ft_putnbr_base(long nb, int b, char *base);
 void		show_alloc_mem_hexdump(void);
+char		*ft_strncpy(char *dest, const char *src, size_t len);
 
 /*
  *	Heap's functions

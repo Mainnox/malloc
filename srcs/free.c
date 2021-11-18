@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 10:49:34 by akremer           #+#    #+#             */
-/*   Updated: 2021/07/05 16:33:29 by akremer          ###   ########.fr       */
+/*   Updated: 2021/11/18 14:22:23 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void		free(void *ptr)
 	t_heap	*heap_tmp;
 	t_block	*block;
 
-	printf("free start\n");
 	if (!ptr || !(heap = findheap((t_block **)&ptr)))
 		return ;
 	block = (t_block *)(ptr - sizeof(t_block));
@@ -61,5 +60,4 @@ void		free(void *ptr)
 		}
 		munmap(heap, heap->total_size);
 	}
-	printf("free done\n");
 }

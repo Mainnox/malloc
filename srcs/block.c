@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 11:54:19 by akremer           #+#    #+#             */
-/*   Updated: 2021/07/05 14:49:20 by akremer          ###   ########.fr       */
+/*   Updated: 2021/11/18 14:22:42 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,5 @@ t_block		*createnewblock(t_heap *act_page, size_t size, char type)
 		act_page->block = new_block;
 	}
 	new_block->data_size = size;
-	write(1, "Malloc done \n", 13);
 	return ((void *)new_block + sizeof(t_block));
 }
