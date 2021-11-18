@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   realloc.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/18 17:23:40 by akremer           #+#    #+#             */
+/*   Updated: 2021/11/18 17:45:24 by akremer          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "malloc.h"
 
 extern t_heap *g_heap;
@@ -5,22 +17,19 @@ extern t_heap *g_heap;
 void		*realloc(void *ptr, size_t size)
 {
 	void		*ret;
-	void		*tmp_ptr;
 	t_block		*s;
 
-	tmp_ptr = ptr;
+	s = NULL;
+	ret = NULL;
 	ret = malloc(size);
 	if (ret && ptr)
 	{
-		s = (t_block *)(tmp_ptr - (sizeof(t_block)));
-		printf("s->data_size = %zu\n", s->data_size);
-		printf("size = %zu\n", size);
+		s = (t_block *)(ptr - (sizeof(t_block)));
 		if (s->data_size <= size)
-			ft_strncpy(tmp_ptr, ret, s->data_size);
+			ft_strncpy(ret, ptr, s->data_size);
 		else
-			ft_strncpy(tmp_ptr, ret, size);
+			ft_strncpy(ret, ptr, size);
 	}
-//	hexDump("test", ret - sizeof(t_block) - sizeof(t_heap), 1064);
 	free(ptr);
 	return (ret);
 }

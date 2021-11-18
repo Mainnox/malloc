@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 14:28:14 by akremer           #+#    #+#             */
-/*   Updated: 2021/11/18 16:48:29 by akremer          ###   ########.fr       */
+/*   Created: 2021/11/18 16:05:00 by akremer           #+#    #+#             */
+/*   Updated: 2021/11/18 16:05:30 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-char		*ft_strncpy(char *dest, const char *src, size_t len)
+void			print(char *ptr)
 {
-	size_t i;
-
-	i = 0;
-	while (src[i] && i < len)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < len)
-		dest[i++] = 0;
-	return (dest);
+	write(1, ptr, strlen(ptr));
 }

@@ -6,7 +6,7 @@
 #    By: akremer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/18 13:57:50 by akremer           #+#    #+#              #
-#    Updated: 2021/11/18 14:43:25 by akremer          ###   ########.fr        #
+#    Updated: 2021/11/18 16:06:04 by akremer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ INCLUDE_HEADER = -I ./$(HEADER_PATH)
 PTHREAD = -pthread
 
 SRC_PATH = ./srcs/
-SRC_NAME = malloc.c realloc.c free.c show_alloc_mem.c block.c ft_memcpy.c ft_putnbr.c ft_putstr.c heap.c hex_dump.c calloc.c ft_strncpy.c
+SRC_NAME = malloc.c realloc.c free.c show_alloc_mem.c block.c ft_memcpy.c ft_putnbr.c ft_putstr.c heap.c hex_dump.c calloc.c ft_strncpy.c tools.c
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 
 OBJ_PATH = .obj/

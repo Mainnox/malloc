@@ -6,7 +6,7 @@
 /*   By: akremer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 10:45:12 by akremer           #+#    #+#             */
-/*   Updated: 2021/11/18 14:30:31 by akremer          ###   ########.fr       */
+/*   Updated: 2021/11/18 17:45:27 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@
 typedef struct			s_block
 {
 	bool			freed;
-	struct s_block		*next;
 	size_t			data_size;
+	struct s_block		*next;
 }				t_block;
 
 typedef struct 		s_heap
 {
 	char			type;
-	unsigned char			block_freed;
+	unsigned char	block_freed;
 	char			block_count;
 	size_t			total_size;
 	t_block			*block;
@@ -74,6 +74,7 @@ void		show_alloc_mem(void);
 void		ft_putnbr_base(long nb, int b, char *base);
 void		show_alloc_mem_hexdump(void);
 char		*ft_strncpy(char *dest, const char *src, size_t len);
+void		print(char *ptr);
 
 /*
  *	Heap's functions

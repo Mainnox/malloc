@@ -6,11 +6,11 @@
 /*   By: lyhamrou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 15:17:14 by lyhamrou          #+#    #+#             */
-/*   Updated: 2021/11/18 14:47:40 by akremer          ###   ########.fr       */
+/*   Updated: 2021/11/18 17:45:26 by akremer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "ft_malloc.h"
+#include "malloc.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -32,7 +32,7 @@ void	printAllocationSettings(void)
 	   printf("SMALL_BLOCK_SIZE %d\n", SMALL_SIZE);
 	   printf("getpagesize   : %d\n", getpagesize());
 	   printf("===============================================================\n");
-	//*/
+	*/
 }
 
 void	*fillPtr(unsigned char *ptr, size_t size, unsigned char c)
@@ -74,16 +74,13 @@ void  test4(void)
 void  test3(void)
 {
 	char *ad1 = NULL;
-	char *ad2 = NULL;
 	char *ad3 = NULL;
 
 	ad1 = (char *)malloc(16 * M);
 	strcpy(ad1, "bonjours\n");
 	print(ad1);
-	ad2 = (char *)malloc(16 * M);
 	ad3 = realloc(ad1, 128 * M);
 	ad3[127 * M] = 42;
-	print(ad3);
 	print(ad3);
 	return ;
 }
