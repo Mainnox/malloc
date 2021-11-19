@@ -20,7 +20,7 @@ INCLUDE_HEADER = -I ./$(HEADER_PATH)
 PTHREAD = -pthread
 
 SRC_PATH = ./srcs/
-SRC_NAME = malloc.c realloc.c free.c show_alloc_mem.c block.c ft_memcpy.c ft_putnbr.c ft_putstr.c heap.c hex_dump.c calloc.c ft_strncpy.c tools.c
+SRC_NAME = malloc.c realloc.c free.c show_alloc_mem.c block.c ft_memcpy.c ft_putnbr.c ft_putstr.c heap.c hex_dump.c calloc.c ft_strncpy.c tools.c ft_strlen.c
 SRC = $(addprefix $(SRC_PATH), $(SRC_NAME))
 
 OBJ_PATH = .obj/

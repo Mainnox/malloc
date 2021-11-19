@@ -1,0 +1,107 @@
+make: 'mallockiller' is up to date.
+compiling test0.c - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+---------------- the real test0 -----------------
+	Minor (reclaiming a frame) page faults: 53
+	Maximum resident set size (kbytes): 1016
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 53
+----------------- my own test0 ------------------
+	Minor (reclaiming a frame) page faults: 56
+	Maximum resident set size (kbytes): 1080
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 56
+- - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+compiling test1.c - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+---------------- the real test1 -----------------
+	Minor (reclaiming a frame) page faults: 318
+	Maximum resident set size (kbytes): 2252
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 318
+----------------- my own test1 ------------------
+	Minor (reclaiming a frame) page faults: 324
+	Maximum resident set size (kbytes): 2160
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 324
+- - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+compiling test2.c - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+---------------- the real test2 -----------------
+	Minor (reclaiming a frame) page faults: 56
+	Maximum resident set size (kbytes): 1060
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 56
+----------------- my own test2 ------------------
+	Minor (reclaiming a frame) page faults: 64
+	Maximum resident set size (kbytes): 1160
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 64
+- - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+compiling test3.c - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+---------------- the real test3 -----------------
+bonjours
+bonjours
+	Minor (reclaiming a frame) page faults: 61
+	Maximum resident set size (kbytes): 1212
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 61
+----------------- my own test3 ------------------
+bonjours
+bonjours
+	Minor (reclaiming a frame) page faults: 65
+	Maximum resident set size (kbytes): 1140
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 65
+- - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+compiling test4.c - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+---------------- the real test4 -----------------
+	Minor (reclaiming a frame) page faults: 62
+	Maximum resident set size (kbytes): 1208
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 62
+----------------- my own test4 ------------------
+	Minor (reclaiming a frame) page faults: 65
+	Maximum resident set size (kbytes): 976
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 65
+- - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
+compiling test5.c - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+---------------- the real test5 -----------------
+	Minor (reclaiming a frame) page faults: 59
+	Maximum resident set size (kbytes): 1072
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 59
+----------------- my own test5 ------------------
+	Minor (reclaiming a frame) page faults: 66
+	Maximum resident set size (kbytes): 1140
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 66
+- - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+

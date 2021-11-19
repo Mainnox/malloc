@@ -12,6 +12,24 @@
 
 #include "malloc.h"
 
+static int	checkotherheap(char type)
+{
+	t_heap	*heap_tmp;
+	int		count;
+
+	if (type == LARGE)
+		return (0);
+	heap_tmp = g_heap;
+	count = 0;
+	while (heap_tmp)
+	{
+		if (heap_tmp->type == type)
+			count++;
+		heap_tmp = heap_tmp->next;
+	}
+	return (count);
+}
+
 t_heap		*findheap(t_block **hime)
 {
 	t_heap	*heap_tmp = g_heap;
@@ -50,7 +68,7 @@ void		free(void *ptr)
 	block = (t_block *)(ptr - sizeof(t_block));
 	block->freed = true;
 	heap->block_freed++;
-	if (heap->block_count == heap->block_freed)
+	if (heap->block_count == heap->block_freed && !checkotherheap(heap->type))
 	{
 		if (heap == g_heap)
 		{
@@ -63,6 +81,9 @@ void		free(void *ptr)
 				heap_tmp = heap_tmp->next;
 			heap_tmp->next = heap->next;
 		}
-		munmap(heap, heap->total_size);
+		if (!checkotherheap(heap->type))
+		{
+			munmap(heap, heap->total_size);
+		}
 	}
 }

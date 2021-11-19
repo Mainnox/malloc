@@ -16,3 +16,11 @@ void			print(char *ptr)
 {
 	write(1, ptr, strlen(ptr));
 }
+
+void			print_macro_allo(void)
+{
+	printf("TINY_HEAP_ALLOCATION_SIZE = %ld\n", TINY_HEAP_ALLOCATION_SIZE);
+	printf("SMALL_HEAP_ALLOCATION_SIZE = %ld\n", SMALL_HEAP_ALLOCATION_SIZE);
+	printf("TINY_BLOCK_SIZE = %ld\n", TINY_BLOCK_SIZE);
+	printf("SMALL_BLOCK_SIZE = %ld\n", SMALL_BLOCK_SIZE);
+}

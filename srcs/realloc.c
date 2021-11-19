@@ -17,19 +17,11 @@ extern t_heap *g_heap;
 void		*realloc(void *ptr, size_t size)
 {
 	void		*ret;
-	t_block		*s;
 
-	s = NULL;
 	ret = NULL;
 	ret = malloc(size);
 	if (ret && ptr)
-	{
-		s = (t_block *)(ptr - (sizeof(t_block)));
-		if (s->data_size <= size)
-			ft_strncpy(ret, ptr, s->data_size);
-		else
-			ft_strncpy(ret, ptr, size);
-	}
+		ft_strncpy(ret, ptr, ft_strlen(ptr));
 	free(ptr);
 	return (ret);
 }

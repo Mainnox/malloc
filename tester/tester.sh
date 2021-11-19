@@ -21,7 +21,7 @@ do
 	echo ---------------- the real test$ARG -----------------
 	/usr/bin/time $TIME_PARAM ./tester/test$ARG 2>> .result;
 	cat .result | grep "reclaim";
-	#cat .result | grep "aximum resident set size";
+	cat .result | grep "aximum resident set size";
 	cat .result | grep "page fault";
 	#cat .result | grep "context";
 	rm .result;
@@ -41,7 +41,7 @@ fi;
 
 	/usr/bin/time $TIME_PARAM ./tester/test$ARG 2>> .result;
 	cat .result | grep "reclaim";
-	#cat .result | grep "aximum resident set size";
+	cat .result | grep "aximum resident set size";
 	cat .result | grep "page fault";
 	#cat .result | grep "context";
 

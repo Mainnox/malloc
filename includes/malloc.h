@@ -25,11 +25,11 @@
 
 #define HEAP_SHIFT(start) ((void *)start + sizeof(t_heap))
 #define BLOCK_SHIFT(start) ((void *)start + sizeof(t_block))
-#define TINY_HEAP_ALLOCATION_SIZE (4UL * getpagesize())
+#define TINY_HEAP_ALLOCATION_SIZE (8UL * getpagesize())
 #define TINY_BLOCK_SIZE (TINY_HEAP_ALLOCATION_SIZE / 128) 
 #define MAX_TINY_BLOCK 107
 #define MAX_SMALL_BLOCK 122
-#define SMALL_HEAP_ALLOCATION_SIZE (16UL * getpagesize())
+#define SMALL_HEAP_ALLOCATION_SIZE (32UL * getpagesize())
 #define SMALL_BLOCK_SIZE (SMALL_HEAP_ALLOCATION_SIZE / 128)
 #define bool char
 #define true 1
@@ -75,6 +75,8 @@ void		ft_putnbr_base(long nb, int b, char *base);
 void		show_alloc_mem_hexdump(void);
 char		*ft_strncpy(char *dest, const char *src, size_t len);
 void		print(char *ptr);
+int			ft_strlen(char *str);
+void		print_macro_allo(void);
 
 /*
  *	Heap's functions
