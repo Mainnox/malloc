@@ -84,7 +84,7 @@ void		print_macro_allo(void);
 
 t_heap		*checkifheapmatch(char type);
 t_heap		*createnewheap(size_t size, char type);
-t_heap		*findblock(t_heap **hime);
+t_heap		*findheap(t_block **hime);
 
 /*
  *	Block's functions
@@ -92,6 +92,7 @@ t_heap		*findblock(t_heap **hime);
 
 t_block		*createnewblock(t_heap *act_page, size_t size, char type);
 t_block		*wheretoplaceblock(t_heap *act_page);
+t_block		*findblock(t_heap *heap, void *ptr);
 
 /*
  *	Main's functions

@@ -54,6 +54,20 @@ t_heap		*findheap(t_block **hime)
 	return (NULL);
 }
 
+t_block		*findblock(t_heap *heap, void *ptr)
+{
+	t_block	*block_tmp;
+
+	block_tmp = heap->block;
+	while (block_tmp)
+	{
+		if ((void *)block_tmp == ptr - (long)sizeof(t_block))
+			return (block_tmp);
+		block_tmp = block_tmp->next;
+	}
+	return (NULL);
+}
+
 void		free(void *ptr)
 {
 	t_heap	*heap;
@@ -65,15 +79,15 @@ void		free(void *ptr)
 	heap_tmp = NULL;
 	if (!ptr || !(heap = findheap((t_block **)&ptr)))
 		return ;
-	block = (t_block *)(ptr - sizeof(t_block));
+	block = findblock(heap, ptr);
+	if (!block)
+		return ;
 	block->freed = true;
 	heap->block_freed++;
 	if (heap->block_count == heap->block_freed && !checkotherheap(heap->type))
 	{
 		if (heap == g_heap)
-		{
 			g_heap = g_heap->next;
-		}
 		else
 		{
 			heap_tmp = g_heap;
@@ -82,8 +96,6 @@ void		free(void *ptr)
 			heap_tmp->next = heap->next;
 		}
 		if (!checkotherheap(heap->type))
-		{
 			munmap(heap, heap->total_size);
-		}
 	}
 }

@@ -43,9 +43,8 @@ fi;
 	cat .result | grep "reclaim";
 	cat .result | grep "aximum resident set size";
 	cat .result | grep "page fault";
-	#cat .result | grep "context";
+	cat .result | grep "Segmentation fault";
 
-	rm .result;
 if [ "$TIME_PARAM" = "-l" ]; then
 	unset DYLD_LIBRARY_PATH
 	unset DYLD_INSERT_LIBRARIES
